@@ -1,14 +1,38 @@
-import React from 'react'
-import Navbar from "../components/Navbar.jsx";
-import Hero from "../components/Hero.jsx";
+// src/pages/Home.jsx
+import { useEffect, useState } from 'react';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import CategoryTabs from '../components/CategoryTabs';
+import MenuList from '../components/MenuList';
+import OpenHours from '../components/OpenHours';
+import Footer from '../components/Footer';
+import { fetchCategories } from '../services/api';
 
-const Home = () => {
+export default function Home() {
+    const [categories, setCategories] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState('');
+
+    useEffect(() => {
+        async function loadCategories() {
+            const data = await fetchCategories();
+            setCategories(data);
+            setSelectedCategory(data[0] || '');
+        }
+        loadCategories();
+    }, []);
+
     return (
         <div>
             <Navbar />
             <Hero />
-            {/* Sections to follow */}
+            <CategoryTabs
+                categories={categories}
+                selected={selectedCategory}
+                onSelect={setSelectedCategory}
+            />
+            <MenuList category={selectedCategory} />
+            <OpenHours />
+            <Footer />
         </div>
-    )
+    );
 }
-export default Home
