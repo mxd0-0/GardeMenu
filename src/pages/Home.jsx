@@ -12,6 +12,7 @@ export default function Home() {
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
 
+
     useEffect(() => {
         async function loadCategories() {
             const data = await fetchCategories();

@@ -36,9 +36,10 @@
 
 
 
+// src/components/MenuList.jsx
 import { useEffect, useState } from 'react';
 import MenuCard from './MenuCard';
-import { fetchMenuItemsByCategory } from '../services/api';
+import { fetchMenuItems } from '../services/api'; // FIXED IMPORT
 
 export default function MenuList({ category }) {
     const [items, setItems] = useState([]);
@@ -49,17 +50,21 @@ export default function MenuList({ category }) {
 
         async function loadItems() {
             setLoading(true);
-            const data = await fetchMenuItemsByCategory(category);
+            console.log('[DEBUG] Fetching menu for category:', category); // <-- Add this
+            const data = await fetchMenuItems(category);
+            console.log('[DEBUG] Menu data received:', data); // <-- Add this
             setItems(data);
             setLoading(false);
         }
 
         loadItems();
-    }, [category]);
+        }, [category]);
 
     return (
         <section className="max-w-4xl mx-auto px-4 py-10">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4 text-tinos text-center">{category} Menu</h2>
+            <h2 className="text-2xl font-bold text-gray-800 mb-4 text-tinos text-center">
+            {category?.name ?? 'Select a Category'} Menu
+            </h2>
 
             {loading ? (    
                 <p className="text-gray-600 ">Loading menu items...</p>
