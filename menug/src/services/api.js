@@ -1,5 +1,5 @@
 // src/services/api.js
-const BASE_URL = 'http://127.0.0.1:8080';
+const BASE_URL = 'http://localhost:8080';
 
 export async function fetchCategories() {
     try {
@@ -11,6 +11,7 @@ export async function fetchCategories() {
         return [];
     }
 }
+
 export async function fetchMenuItems(category) {
     try {
         const res = await fetch(`http://localhost:8080/menu?category=${encodeURIComponent(category)}`);
