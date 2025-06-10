@@ -8,6 +8,9 @@ export default {
         colors: {
         primary: '#B5C732',
         },
+        screens: {
+        xs: '360px', // Example for very small phones
+      },
     },
   },
   plugins: [],

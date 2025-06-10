@@ -6,7 +6,7 @@ import './index.css';
 
 function App() {
   return (
-         <main >
+         <main>
               <Home />
           </main>
   )

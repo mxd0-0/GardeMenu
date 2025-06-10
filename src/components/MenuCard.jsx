@@ -14,9 +14,8 @@
 
 export default function MenuCard({ item }) {
     return (
-        <div className="bg-gray-50  my-1 h-auto sm:my-2 md:my-4 
-        border-2 border-primary/30  w-full rounded-full p-4 flex flex-col sm:flex-row 
-         sm:items-center justify-between space-y-2 sm:space-y-0 sm:space-x-4 hover:shadow-lg transition">
+        <div className="border-2 border-primary/30 w-full rounded-2xl p-4 flex flex-col md:flex-row 
+ items-start md:items-center justify-between space-y-2 md:space-y-0 md:space-x-4 hover:shadow-lg transition">
             <div className="flex-1">
                 <h2 className="text-lg font-semibold text-gray-800">{item.name}</h2>
                 <p className="text-sm text-gray-600">{item.description}</p>

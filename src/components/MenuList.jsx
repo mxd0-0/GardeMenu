@@ -66,7 +66,7 @@ export default function MenuList({ category }) {
             ) : items.length === 0 ? (
                 <p className="text-gray-500">No items found for this category.</p>
             ) : (
-                <div className=" ">
+               <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-4">
                     {items.map((item) => (
                         <MenuCard key={item.id} item={item} className="
                          w-full my-2 sm:my-4 md:my-6 lg:my-8"/>
